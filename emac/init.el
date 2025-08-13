@@ -166,5 +166,23 @@ If current buffer is a .tsx file, switch to web-mode before indenting."
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ ;; If there is more than one, the;; ===========================
+;; Store backups & autosaves elsewhere
+;; ===========================
+
+;; Create a central backups dir if it doesn't exist
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
+
+;; Put auto-saves in the same central place
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "auto-save-list/" user-emacs-directory) t)))
+
+;; Keep auto-save-list dir clean
+(setq auto-save-list-file-prefix
+      (expand-file-name "auto-save-list/.saves-" user-emacs-directory))
+
+;; Optional: don't make lockfiles (".#filename")
+(setq create-lockfiles nil)
+y won't work right.
  )
